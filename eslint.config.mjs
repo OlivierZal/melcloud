@@ -1,9 +1,10 @@
 import eslint from '@eslint/js'
 // @ts-expect-error: untyped module
+import stylistic from '@stylistic/eslint-plugin'
+import prettier from 'eslint-config-prettier'
 import importPlugin from 'eslint-plugin-import'
 import jsdoc from 'eslint-plugin-jsdoc'
-import prettier from 'eslint-config-prettier'
-import stylistic from '@stylistic/eslint-plugin'
+import perfectionist from 'eslint-plugin-perfectionist/configs/recommended-natural'
 import tsEslint from 'typescript-eslint'
 
 export default tsEslint.config(
@@ -14,6 +15,7 @@ export default tsEslint.config(
     extends: [
       eslint.configs.all,
       ...tsEslint.configs.all,
+      perfectionist,
       importPlugin.configs.typescript,
       jsdoc.configs['flat/recommended-typescript-error'],
       prettier,
@@ -256,13 +258,13 @@ export default tsEslint.config(
       ],
       'no-ternary': 'off',
       'one-var': ['error', 'never'],
-      'sort-keys': [
-        'error',
-        'asc',
-        {
-          natural: true,
-        },
-      ],
+      'perfectionist/sort-classes': 'off',
+      'perfectionist/sort-interfaces': 'off',
+      'perfectionist/sort-intersection-types': 'off',
+      'perfectionist/sort-object-types': 'off',
+      'perfectionist/sort-union-types': 'off',
+      'sort-imports': 'off',
+      'sort-keys': 'off',
     },
     settings: {
       'import/resolver': {
